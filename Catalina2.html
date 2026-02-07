@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pentru Cătălina 🌺</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0f0f1a;
+            color: #e0e0e0;
+            overflow: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flower-bg {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            z-index: 1;
+            animation: float 20s infinite ease-in-out;
+            pointer-events: none;
+        }
+        .f1 { top: -10%; left: -10%; width: 400px; height: 400px; background: #6a1b9a; animation-delay: 0s; }
+        .f2 { bottom: 0%; right: -10%; width: 300px; height: 300px; background: #ab47bc; animation-delay: -5s; }
+        .f3 { top: 40%; left: 40%; width: 200px; height: 200px; background: #4a148c; animation-delay: -10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, -50px); }
+        }
+
+        .card {
+            background: rgba(20, 20, 30, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            border-radius: 20px;
+            padding: 40px;
+            width: 85%;
+            max-width: 450px;
+            height: 400px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.1s;
+            overflow: hidden;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .slide {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.6s ease-in-out;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .slide.inactive {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+
+        .peeking-cat {
+            position: absolute;
+            bottom: -130px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 90px;
+            z-index: 10;
+            transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .cat-head {
+            width: 90px;
+            height: 70px;
+            background-color: #9ea7b8;
+            border-radius: 45% 45% 40% 40%;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            z-index: 2;
+            margin: 0 auto;
+        }
+
+        .ear {
+            width: 25px;
+            height: 15px;
+            background-color: #8d96a6;
+            position: absolute;
+            top: 5px;
+            border-radius: 5px 5px 15px 15px;
+            z-index: 1;
+        }
+        .ear.left { left: 5px; transform: rotate(-20deg); }
+        .ear.right { right: 5px; transform: rotate(20deg); }
+
+        .stripes {
+            position: absolute;
+            top: 2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            z-index: 3;
+        }
+        .stripe {
+            width: 4px;
+            height: 15px;
+            background-color: #4a505e;
+            border-radius: 2px;
+            position: absolute;
+        }
+        .stripe.mid { left: 50%; transform: translateX(-50%); height: 18px; }
+        .stripe.l { left: 8px; transform: rotate(-10deg); }
+        .stripe.r { right: 8px; transform: rotate(10deg); }
+
+        .cat-eyes {
+            position: absolute;
+            top: 28px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            z-index: 3;
+        }
+        .eye {
+            width: 20px;
+            height: 20px;
+            background-color: #ffbf00;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.2);
+            animation: blink 4s infinite ease-in-out;
+        }
+        .pupil {
+            width: 6px;
+            height: 16px;
+            background-color: #111;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+
+        .nose {
+            width: 8px;
+            height: 6px;
+            background: #ffb6c1;
+            border-radius: 50% 50% 50% 50%;
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+        }
+
+        .paws-container {
+            position: absolute;
+            bottom: -5px;
+            width: 100%;
+            z-index: 10;
+        }
+        .paw {
+            width: 22px;
+            height: 18px;
+            background-color: #ffffff;
+            border-radius: 12px 12px 8px 8px;
+            position: absolute;
+            bottom: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .paw.left { left: 18px; transform: rotate(-5deg); }
+        .paw.right { right: 18px; transform: rotate(5deg); }
+        
+        .toe {
+            position: absolute;
+            top: 0;
+            width: 1px;
+            height: 8px;
+            background-color: #ccc;
+            left: 7px;
+        }
+        .toe:nth-child(2) { left: 14px; }
+
+        .peeking-cat.show {
+            bottom: -15px;
+        }
+
+        @keyframes blink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        h1.name {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            margin: 0;
+            background: linear-gradient(to right, #e1bee7, #ce93d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .big-flower {
+            font-size: 4rem;
+            margin-top: 15px;
+            display: block;
+            animation: bloom 2s infinite ease-in-out alternate;
+            filter: drop-shadow(0 0 10px rgba(157, 78, 221, 0.5));
+        }
+
+        .hug-emoji { font-size: 5rem; display: block; margin-bottom: 20px; }
+
+        @keyframes bloom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        h2 {
+            color: #d1c4e9;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .small-note {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: -10px;
+            font-style: italic;
+            display: block;
+        }
+
+        .highlight { color: #ab47bc; font-weight: 600; }
+
+        .list-item {
+            background: rgba(157, 78, 221, 0.1);
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 3px solid #9d4edd;
+            text-align: left;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .list-icon { margin-right: 10px; font-size: 1.2rem; }
+        .note { font-size: 0.8rem; color: #aaa; font-style: italic; margin-left: 5px; }
+
+        .tap-hint {
+            position: absolute;
+            bottom: 20px; left: 0; right: 0;
+            text-align: center; font-size: 0.8rem; color: #777;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-5px);}
+            60% {transform: translateY(-3px);}
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="flower-bg f1"></div>
+    <div class="flower-bg f2"></div>
+    <div class="flower-bg f3"></div>
+
+    <div class="container">
+        <div class="card" id="mainCard" onclick="nextSlide()">
+            
+            <div class="slide active" id="slide1">
+                <h1 class="name">Cătălina</h1>
+                <span class="big-flower">🌺</span>
+            </div>
+
+            <div class="slide" id="slide2">
+                <h2>Happy Valentine's!</h2>
+                <p>
+                    Sper că te bucuri de liniștea de acasă, la <span class="highlight">Vâlcea</span>. Ai meritat din plin pauza asta după haosul din sesiune.
+                </p>
+                <p>
+                    Relaxează-te și recuperează orele de somn. Apropo, aștept să-mi povestești ce mai citești bun 📖
+                </p>
+                <span class="small-note">
+                    (sigur ai început deja o carte nouă sau ai continuat-o pe cea de dezvoltare personală 😁)
+                </span>
+            </div>
+
+            <div class="slide" id="slide3">
+                <h2>Până te întorci...</h2>
+                <p>Să știi că lista de „datorii” te așteaptă în București:</p>
+                <div class="list-item">
+                    <span class="list-icon">🧩</span> Escape Room-ul
+                </div>
+                <div class="list-item">
+                    <span class="list-icon">🍫</span> Lava Cake-ul
+                </div>
+                <div class="list-item">
+                    <span class="list-icon">💜</span> Florile <span class="note">(neapărat mov, evident)</span>
+                </div>
+            </div>
+
+            <div class="slide" id="slide4">
+                <span class="hug-emoji">🫂</span>
+                <h2>Te îmbrățișez!</h2>
+                <p>Și te aștept cu drag înapoi în București.</p>
+                <p style="margin-top: 25px; font-size: 1rem; color: #ab47bc; font-family: 'Cinzel', serif;">
+                    — Alex —
+                </p>
+            </div>
+
+            <div class="peeking-cat" id="theCat">
+                <div class="ear left"></div>
+                <div class="ear right"></div>
+                
+                <div class="cat-head">
+                    <div class="stripes">
+                        <div class="stripe l"></div>
+                        <div class="stripe mid"></div>
+                        <div class="stripe r"></div>
+                    </div>
+                    
+                    <div class="cat-eyes">
+                        <div class="eye"><div class="pupil"></div></div>
+                        <div class="eye"><div class="pupil"></div></div>
+                    </div>
+                    <div class="nose"></div>
+                    
+                    <div class="paws-container">
+                        <div class="paw left">
+                            <div class="toe"></div><div class="toe"></div>
+                        </div>
+                        <div class="paw right">
+                             <div class="toe"></div><div class="toe"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tap-hint" id="hintText">Apasă pentru continuare</div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 4;
+        const cardElement = document.getElementById('mainCard');
+
+        function nextSlide() {
+            if (currentSlide >= totalSlides) return;
+
+            let oldSlide = document.getElementById('slide' + currentSlide);
+            oldSlide.classList.remove('active');
+            oldSlide.classList.add('inactive');
+            
+            currentSlide++;
+            
+            let newSlide = document.getElementById('slide' + currentSlide);
+            newSlide.classList.remove('inactive');
+            newSlide.classList.add('active');
+
+            if (currentSlide === totalSlides) {
+                document.getElementById('hintText').style.display = 'none';
+                document.querySelector('.card').style.cursor = 'default';
+                
+                document.getElementById('theCat').classList.add('show');
+                
+                launchBluePurpleConfetti();
+            }
+        }
+
+        function launchBluePurpleConfetti() {
+            const colors = [
+                '#9c27b0', 
+                '#e040fb', 
+                '#2196f3', 
+                '#64b5f6', 
+                '#ffffff'
+            ];
+
+            for(let i=0; i<60; i++) {
+                let conf = document.createElement('div');
+                conf.classList.add('confetti-piece');
+                
+                conf.style.left = '50%';
+                conf.style.top = '50%';
+                conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                let x = (Math.random() - 0.5) * 400;
+                let y = (Math.random() - 0.5) * 400;
+                let rot = Math.random() * 360;
+                let scale = Math.random() * 1.5;
+                
+                conf.style.transition = `all ${0.8 + Math.random()}s cubic-bezier(0.25, 1, 0.5, 1)`;
+                
+                cardElement.appendChild(conf);
+
+                setTimeout(() => {
+                    conf.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg) scale(0)`;
+                    conf.style.opacity = 0;
+                }, 50);
+            }
+        }
+    </script>
+
+</body>
+</html>
