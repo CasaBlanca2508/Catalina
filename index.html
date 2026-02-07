@@ -2,17 +2,22 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <meta name="color-scheme" content="only light">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Pentru Cătălina 🌺</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            color-scheme: only light;
+        }
+
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             font-family: 'Montserrat', sans-serif;
-            background-color: #0f0f1a;
-            color: #e0e0e0;
+            background-color: #0f0f1a !important;
+            color: #e0e0e0 !important;
             overflow: hidden;
             user-select: none;
             -webkit-tap-highlight-color: transparent;
@@ -36,9 +41,9 @@
             animation: float 20s infinite ease-in-out;
             pointer-events: none;
         }
-        .f1 { top: -10%; left: -10%; width: 400px; height: 400px; background: #6a1b9a; animation-delay: 0s; }
-        .f2 { bottom: 0%; right: -10%; width: 300px; height: 300px; background: #ab47bc; animation-delay: -5s; }
-        .f3 { top: 40%; left: 40%; width: 200px; height: 200px; background: #4a148c; animation-delay: -10s; }
+        .f1 { top: -10%; left: -10%; width: 400px; height: 400px; background: #6a1b9a !important; animation-delay: 0s; }
+        .f2 { bottom: 0%; right: -10%; width: 300px; height: 300px; background: #ab47bc !important; animation-delay: -5s; }
+        .f3 { top: 40%; left: 40%; width: 200px; height: 200px; background: #4a148c !important; animation-delay: -10s; }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0); }
@@ -46,7 +51,7 @@
         }
 
         .card {
-            background: rgba(20, 20, 30, 0.7);
+            background: rgba(20, 20, 30, 0.75) !important;
             backdrop-filter: blur(15px);
             border: 1px solid rgba(157, 78, 221, 0.3);
             border-radius: 20px;
@@ -97,12 +102,13 @@
             height: 90px;
             z-index: 10;
             transition: bottom 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: none !important;
         }
 
         .cat-head {
             width: 90px;
             height: 70px;
-            background-color: #9ea7b8;
+            background-color: #9ea7b8 !important;
             border-radius: 45% 45% 40% 40%;
             position: relative;
             box-shadow: 0 5px 15px rgba(0,0,0,0.4);
@@ -113,7 +119,7 @@
         .ear {
             width: 25px;
             height: 15px;
-            background-color: #8d96a6;
+            background-color: #8d96a6 !important;
             position: absolute;
             top: 5px;
             border-radius: 5px 5px 15px 15px;
@@ -134,7 +140,7 @@
         .stripe {
             width: 4px;
             height: 15px;
-            background-color: #4a505e;
+            background-color: #4a505e !important;
             border-radius: 2px;
             position: absolute;
         }
@@ -154,7 +160,7 @@
         .eye {
             width: 20px;
             height: 20px;
-            background-color: #ffbf00;
+            background-color: #ffbf00 !important;
             border-radius: 50%;
             position: relative;
             overflow: hidden;
@@ -164,7 +170,7 @@
         .pupil {
             width: 6px;
             height: 16px;
-            background-color: #111;
+            background-color: #111 !important;
             position: absolute;
             left: 50%;
             top: 50%;
@@ -175,8 +181,8 @@
         .nose {
             width: 8px;
             height: 6px;
-            background: #ffb6c1;
-            border-radius: 50% 50% 50% 50%;
+            background: #ffb6c1 !important;
+            border-radius: 50%;
             position: absolute;
             top: 50px;
             left: 50%;
@@ -193,7 +199,7 @@
         .paw {
             width: 22px;
             height: 18px;
-            background-color: #ffffff;
+            background-color: #ffffff !important;
             border-radius: 12px 12px 8px 8px;
             position: absolute;
             bottom: 0;
@@ -207,7 +213,7 @@
             top: 0;
             width: 1px;
             height: 8px;
-            background-color: #ccc;
+            background-color: #ccc !important;
             left: 7px;
         }
         .toe:nth-child(2) { left: 14px; }
@@ -255,7 +261,7 @@
         }
 
         h2 {
-            color: #d1c4e9;
+            color: #d1c4e9 !important;
             font-size: 1.4rem;
             margin-bottom: 20px;
             font-weight: 600;
@@ -264,26 +270,26 @@
         p {
             font-size: 1.1rem;
             line-height: 1.6;
-            color: #ccc;
+            color: #ccc !important;
             margin-bottom: 15px;
         }
 
         .small-note {
             font-size: 0.8rem;
-            color: #888;
+            color: #888 !important;
             margin-top: -10px;
             font-style: italic;
             display: block;
         }
 
-        .highlight { color: #ab47bc; font-weight: 600; }
+        .highlight { color: #ab47bc !important; font-weight: 600; }
 
         .list-item {
-            background: rgba(157, 78, 221, 0.1);
+            background: rgba(157, 78, 221, 0.1) !important;
             padding: 12px;
             margin: 10px 0;
             border-radius: 8px;
-            border-left: 3px solid #9d4edd;
+            border-left: 3px solid #9d4edd !important;
             text-align: left;
             font-size: 1rem;
             display: flex;
@@ -291,12 +297,12 @@
         }
         
         .list-icon { margin-right: 10px; font-size: 1.2rem; }
-        .note { font-size: 0.8rem; color: #aaa; font-style: italic; margin-left: 5px; }
+        .note { font-size: 0.8rem; color: #aaa !important; font-style: italic; margin-left: 5px; }
 
         .tap-hint {
             position: absolute;
             bottom: 20px; left: 0; right: 0;
-            text-align: center; font-size: 0.8rem; color: #777;
+            text-align: center; font-size: 0.8rem; color: #777 !important;
             animation: bounce 2s infinite;
         }
 
