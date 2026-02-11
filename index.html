@@ -409,7 +409,7 @@
                 
                 let scale = 0.8 + Math.random() * 1.2;
                 
-                conf.style.transition = `transform 1s cubic-bezier(0.1, 1, 0.1, 1), opacity 1s`;
+                conf.style.transition = `transform 3s cubic-bezier(0.05, 1, 0.1, 1), opacity 3s`;
                 
                 container.appendChild(conf);
 
@@ -420,7 +420,7 @@
 
                 setTimeout(() => {
                     conf.remove();
-                }, 1500);
+                }, 3000);
             }
         }
     </script>
