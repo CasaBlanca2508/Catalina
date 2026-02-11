@@ -199,8 +199,9 @@
         }
         .confetti-piece {
             position: absolute;
-            width: 10px; height: 10px;
+            width: 8px; height: 8px;
             border-radius: 50%;
+            will-change: transform, opacity;
         }
 
         h1.name {
@@ -402,14 +403,14 @@
                 conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 
                 let angle = Math.random() * 360;
-                let velocity = 50 + Math.random() * 150;
+                let velocity = 30 + Math.random() * 70;
                 
                 let x = Math.cos(angle * Math.PI / 180) * velocity;
                 let y = Math.sin(angle * Math.PI / 180) * velocity;
                 
-                let scale = 0.6 + Math.random() * 1.0;
+                let scale = 0.5 + Math.random() * 0.8;
                 
-                conf.style.transition = `transform 4s ease-out, opacity 4s ease-in`;
+                conf.style.transition = `transform 6s cubic-bezier(0.1, 1, 0.1, 1), opacity 5s ease-in`;
                 
                 container.appendChild(conf);
 
@@ -420,7 +421,7 @@
 
                 setTimeout(() => {
                     conf.remove();
-                }, 4000);
+                }, 6000);
             }
         }
     </script>
