@@ -403,14 +403,14 @@
                 conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 
                 let angle = Math.random() * 360;
-                let velocity = 30 + Math.random() * 70;
+                let velocity = 180 + Math.random() * 350;
                 
                 let x = Math.cos(angle * Math.PI / 180) * velocity;
                 let y = Math.sin(angle * Math.PI / 180) * velocity;
                 
                 let scale = 0.5 + Math.random() * 0.8;
                 
-                conf.style.transition = `transform 6s cubic-bezier(0.1, 1, 0.1, 1), opacity 5s ease-in`;
+                conf.style.transition = `transform 6s cubic-bezier(0.08, 1, 0.08, 1), opacity 5s ease-in`;
                 
                 container.appendChild(conf);
 
