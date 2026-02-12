@@ -281,9 +281,23 @@
             40% {transform: translateY(-5px);}
             60% {transform: translateY(-3px);}
         }
+
+        .tap-heart {
+            position: fixed;
+            font-size: 24px;
+            color: #ab47bc;
+            pointer-events: none;
+            z-index: 1000;
+            animation: heartFloatFade 1.5s ease-out forwards;
+        }
+
+        @keyframes heartFloatFade {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
     </style>
 </head>
-<body>
+<body onmousedown="createHeart(event)" ontouchstart="createHeart(event)">
 
     <div class="flower-bg f1"></div>
     <div class="flower-bg f2"></div>
@@ -364,6 +378,18 @@
         let currentSlide = 1;
         const totalSlides = 4;
         const cardElement = document.getElementById('mainCard');
+
+        function createHeart(e) {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💜';
+            heart.className = 'tap-heart';
+            const x = e.clientX || e.touches[0].clientX;
+            const y = e.clientY || e.touches[0].clientY;
+            heart.style.left = (x - 12) + 'px';
+            heart.style.top = (y - 12) + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1500);
+        }
 
         function nextSlide() {
             if (currentSlide >= totalSlides) return;
