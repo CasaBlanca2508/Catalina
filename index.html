@@ -319,7 +319,7 @@
                     Sper că te bucuri de liniștea de acasă, la <span class="highlight">Vâlcea</span>. Ai meritat din plin pauza asta după haosul din sesiune.
                 </p>
                 <p>
-                    Relaxează-te și recuperează orele de somn. Apropo, aștept să-mi povestești ce mai citești bun 📖
+                    Relaxează-te și recuperează orele de somn. Abia aștept să-mi povestești ce mai citești bun 📖
                 </p>
                 <span class="small-note">
                     (sigur ai început deja o carte nouă sau ai continuat Atomic Habits)😂
@@ -333,10 +333,10 @@
                     <span class="list-icon">🧩</span> Escape Room-ul
                 </div>
                 <div class="list-item">
-                    <span class="list-icon">🍫</span> Lava Cake-ul
+                    <span class="list-icon">🧁</span> Lava Cake-ul
                 </div>
                 <div class="list-item">
-                    <span class="list-icon">💜</span> Florile <span class="note">(neapărat mov, evident)</span>
+                    <span class="list-icon">🪻</span> Florile mov <span class="note">(evident)</span>
                 </div>
             </div>
 
@@ -383,12 +383,14 @@
             const heart = document.createElement('div');
             heart.innerHTML = '💜';
             heart.className = 'tap-heart';
-            const x = e.clientX || e.touches[0].clientX;
-            const y = e.clientY || e.touches[0].clientY;
-            heart.style.left = (x - 12) + 'px';
-            heart.style.top = (y - 12) + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 1500);
+            const x = e.clientX || (e.touches && e.touches[0].clientX);
+            const y = e.clientY || (e.touches && e.touches[0].clientY);
+            if (x && y) {
+                heart.style.left = (x - 12) + 'px';
+                heart.style.top = (y - 12) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 1500);
+            }
         }
 
         function nextSlide() {
