@@ -94,6 +94,85 @@
             transform: translate(-50%, -50%) scale(0.95);
         }
 
+        .css-flower {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 25px auto 0 auto;
+        }
+
+        .petals-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: rotateFlower 18s linear infinite;
+        }
+
+        .flower-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 26px;
+            height: 26px;
+            background: radial-gradient(circle at 35% 35%, #ffd54f, #f57f17 70%, #bf6a00);
+            border-radius: 50%;
+            z-index: 20;
+            border: 1.5px solid #000;
+            box-shadow: inset 0 0 4px rgba(0,0,0,0.4);
+        }
+
+        .petal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 22px;
+            height: 38px;
+            background: #ce93d8;
+            border-radius: 50% 50% 50% 50%;
+            transform-origin: center bottom;
+            z-index: 3;
+            border: 1.5px solid #000;
+            margin-top: -38px; 
+            margin-left: -11px;
+        }
+
+        .petal-small {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 18px;
+            height: 32px;
+            background: #f8bbd0;
+            border-radius: 50% 50% 50% 50%;
+            transform-origin: center bottom;
+            z-index: 2;
+            border: 1.5px solid #000;
+            margin-top: -32px;
+            margin-left: -9px;
+        }
+
+        .p1 { transform: rotate(0deg); }
+        .p2 { transform: rotate(60deg); }
+        .p3 { transform: rotate(120deg); }
+        .p4 { transform: rotate(180deg); }
+        .p5 { transform: rotate(240deg); }
+        .p6 { transform: rotate(300deg); }
+
+        .ps1 { transform: rotate(30deg); }
+        .ps2 { transform: rotate(90deg); }
+        .ps3 { transform: rotate(150deg); }
+        .ps4 { transform: rotate(210deg); }
+        .ps5 { transform: rotate(270deg); }
+        .ps6 { transform: rotate(330deg); }
+
+        @keyframes rotateFlower {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
         .peeking-cat {
             position: absolute;
             bottom: -140px;
@@ -327,6 +406,34 @@
             </div>
 
             <div class="slide" id="slide3">
+                <h2>Sfatul meu?</h2>
+                <p>
+                    Profită la maxim de zilele astea. Bucură-te de gătitul cu mami, mai fă câteva ture cu mașina și ieși cu fetele la povești cât poți de mult.
+                </p>
+                <p>
+                    Mai ales că mi-ai zis că în semestrul viitor nu prea mai ajungi pe acasă, acum e momentul să te încarci cu toată căldura de acolo.
+                </p>
+                
+                <div class="css-flower">
+                    <div class="petals-container">
+                        <div class="petal-small ps1"></div>
+                        <div class="petal-small ps2"></div>
+                        <div class="petal-small ps3"></div>
+                        <div class="petal-small ps4"></div>
+                        <div class="petal-small ps5"></div>
+                        <div class="petal-small ps6"></div>
+                        <div class="petal p1"></div>
+                        <div class="petal p2"></div>
+                        <div class="petal p3"></div>
+                        <div class="petal p4"></div>
+                        <div class="petal p5"></div>
+                        <div class="petal p6"></div>
+                    </div>
+                    <div class="flower-center"></div>
+                </div>
+            </div>
+
+            <div class="slide" id="slide4">
                 <h2>Până te întorci...</h2>
                 <p>Să știi că lista de „datorii” te așteaptă în București:</p>
                 <div class="list-item">
@@ -340,7 +447,7 @@
                 </div>
             </div>
 
-            <div class="slide" id="slide4">
+            <div class="slide" id="slide5">
                 <span class="hug-emoji">🫂</span>
                 <h2>Te îmbrățișez!</h2>
                 <p>Și te aștept cu drag înapoi în București.</p>
@@ -376,7 +483,7 @@
 
     <script>
         let currentSlide = 1;
-        const totalSlides = 4;
+        const totalSlides = 5;
         const cardElement = document.getElementById('mainCard');
 
         function createHeart(e) {
@@ -395,25 +502,19 @@
 
         function nextSlide() {
             if (currentSlide >= totalSlides) return;
-
             let oldSlide = document.getElementById('slide' + currentSlide);
             oldSlide.classList.remove('active');
             oldSlide.classList.add('inactive');
-            
             currentSlide++;
-            
             let newSlide = document.getElementById('slide' + currentSlide);
             newSlide.classList.remove('inactive');
             newSlide.classList.add('active');
-
             if (currentSlide === totalSlides) {
                 document.getElementById('hintText').style.display = 'none';
                 document.querySelector('.card').style.cursor = 'default';
-                
                 setTimeout(() => {
                      document.getElementById('theCat').classList.add('show');
                 }, 300);
-                
                 launchBluePurpleConfetti();
             }
         }
@@ -421,38 +522,28 @@
         function launchBluePurpleConfetti() {
             const colors = ['#9c27b0', '#e040fb', '#7b1fa2', '#ffffff'];
             const container = document.getElementById('confettiContainer');
-
             for(let i=0; i<80; i++) {
                 let conf = document.createElement('div');
                 conf.classList.add('confetti-piece');
-                
                 conf.style.left = '50%';
                 conf.style.top = '50%';
                 conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                
                 let angle = Math.random() * 360;
                 let velocity = 180 + Math.random() * 350;
-                
                 let x = Math.cos(angle * Math.PI / 180) * velocity;
                 let y = Math.sin(angle * Math.PI / 180) * velocity;
-                
                 let scale = 0.5 + Math.random() * 0.8;
-                
                 conf.style.transition = `transform 6s cubic-bezier(0.08, 1, 0.08, 1), opacity 5s ease-in`;
-                
                 container.appendChild(conf);
-
                 setTimeout(() => {
                     conf.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
                     conf.style.opacity = 0;
                 }, 10);
-
                 setTimeout(() => {
                     conf.remove();
                 }, 6000);
             }
         }
     </script>
-
 </body>
 </html>
